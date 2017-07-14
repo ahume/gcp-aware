@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GCP Aware Options</title>
+  <style>
+    body { padding: 10px; }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <label for="project-pattern">Project Name Pattern:</label>
+  <input type="text" id="project-pattern" />
+  <label for="warning-text">Warning Text:</label>
+  <input type="text" id="warning-text" />
+
+  <div>
+    <button id="save">Save</button> <span id="status"></span>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

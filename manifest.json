@@ -3,11 +3,20 @@
 
   "name": "GCP Aware",
   "version": "0.1.0",
-  "description": "Be fucking aware",
+  "description": "Be aware",
 
   "content_scripts": [{
     "css": ["styles.css"],
     "js": ["content.js"],
     "matches": ["https://console.cloud.google.com/*"]
-  }]
+  }],
+
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
+
+  "permissions": [
+    "storage"
+  ]
 }

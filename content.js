@@ -1,14 +1,25 @@
 let state = {
   warningShown: false,
+  projectPattern: 'prod',
+  warningText: 'PROD',
 }
+
+chrome.storage.sync.get({
+  projectPattern: 'prod',
+  warningText: 'PROD',
+}, function(items) {
+  state.projectPattern = items.projectPattern;
+  state.warningText = items.warningText;
+});
 
 const getProjectName = () => (new URL(location)).searchParams.get('project');
 
 const maybeAddWarning = () => {
-  if (getProjectName().indexOf('bw-prod') === 0 && state.warningShown === false) {
+  const projectPatternRegEx = new RegExp(state.projectPattern);
+  if (projectPatternRegEx.test(getProjectName()) && state.warningShown === false) {
     insertWarning();
   }
-  else if (getProjectName().indexOf('bw-prod') !==0 && state.warningShown === true) {
+  else if (!projectPatternRegEx.test(getProjectName()) && state.warningShown === true) {
     removeWarning();
   }
 }
@@ -18,7 +29,7 @@ const insertWarning = () => {
 
   var div = document.createElement('div');
   div.id = 'gcp-aware-banner';
-  div.innerHTML = 'PROD';
+  div.innerHTML = state.warningText;
 
   platformbar.insertBefore(div, platformbar.firstChild);
   state.warningShown = true;
