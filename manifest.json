@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+
+  "name": "GCP Aware",
+  "version": "0.1.0",
+  "description": "Be fucking aware",
+
+  "content_scripts": [{
+    "css": ["styles.css"],
+    "js": ["content.js"],
+    "matches": ["https://console.cloud.google.com/*"]
+  }]
+}

@@ -1,0 +1,8 @@
+#gcp-aware-banner {
+  background: red;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-size: 2em;
+  color: #FFF;
+}
